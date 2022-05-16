@@ -123,7 +123,7 @@ func ServePublic(r driver.Registry, wg *sync.WaitGroup, cmd *cobra.Command, args
 	certs := c.GetTSLCertificatesForPublic()
 
 	if tracer := r.Tracer(ctx); tracer.IsLoaded() {
-		handler = otelx.NewHandler(n, "cmd.daemon.ServePublic")
+		handler = otelx.NewHandler(handler, "cmd.daemon.ServePublic")
 	}
 
 	server := graceful.WithDefaults(&http.Server{

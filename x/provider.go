@@ -25,7 +25,7 @@ type CookieProvider interface {
 }
 
 type TracingProvider interface {
-	Tracer(ctx context.Context) *otelx.Tracer
+	Tracer(context.Context) *otelx.Tracer
 }
 
 type SimpleLogger struct {

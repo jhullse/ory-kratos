@@ -18,31 +18,31 @@ func NewRouterPublic() *RouterPublic {
 }
 
 func (r *RouterPublic) GET(path string, handle httprouter.Handle) {
-	r.Handle("GET", path, NoCacheHandle(handle))
+	r.Handle("GET", path, NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterPublic) HEAD(path string, handle httprouter.Handle) {
-	r.Handle("HEAD", path, NoCacheHandle(handle))
+	r.Handle("HEAD", path, NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterPublic) POST(path string, handle httprouter.Handle) {
-	r.Handle("POST", path, NoCacheHandle(handle))
+	r.Handle("POST", path, NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterPublic) PUT(path string, handle httprouter.Handle) {
-	r.Handle("PUT", path, NoCacheHandle(handle))
+	r.Handle("PUT", path, NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterPublic) PATCH(path string, handle httprouter.Handle) {
-	r.Handle("PATCH", path, NoCacheHandle(handle))
+	r.Handle("PATCH", path, NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterPublic) DELETE(path string, handle httprouter.Handle) {
-	r.Handle("DELETE", path, NoCacheHandle(handle))
+	r.Handle("DELETE", path, NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterPublic) Handle(method, path string, handle httprouter.Handle) {
-	r.Router.Handle(method, path, NoCacheHandle(handle))
+	r.Router.Handle(method, path, NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterPublic) HandlerFunc(method, path string, handler http.HandlerFunc) {
@@ -64,31 +64,31 @@ func NewRouterAdmin() *RouterAdmin {
 }
 
 func (r *RouterAdmin) GET(publicPath string, handle httprouter.Handle) {
-	r.Router.GET(path.Join(AdminPrefix, publicPath), NoCacheHandle(handle))
+	r.Router.GET(path.Join(AdminPrefix, publicPath), NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterAdmin) HEAD(publicPath string, handle httprouter.Handle) {
-	r.Router.HEAD(path.Join(AdminPrefix, publicPath), NoCacheHandle(handle))
+	r.Router.HEAD(path.Join(AdminPrefix, publicPath), NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterAdmin) POST(publicPath string, handle httprouter.Handle) {
-	r.Router.POST(path.Join(AdminPrefix, publicPath), NoCacheHandle(handle))
+	r.Router.POST(path.Join(AdminPrefix, publicPath), NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterAdmin) PUT(publicPath string, handle httprouter.Handle) {
-	r.Router.PUT(path.Join(AdminPrefix, publicPath), NoCacheHandle(handle))
+	r.Router.PUT(path.Join(AdminPrefix, publicPath), NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterAdmin) PATCH(publicPath string, handle httprouter.Handle) {
-	r.Router.PATCH(path.Join(AdminPrefix, publicPath), NoCacheHandle(handle))
+	r.Router.PATCH(path.Join(AdminPrefix, publicPath), NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterAdmin) DELETE(publicPath string, handle httprouter.Handle) {
-	r.Router.DELETE(path.Join(AdminPrefix, publicPath), NoCacheHandle(handle))
+	r.Router.DELETE(path.Join(AdminPrefix, publicPath), NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterAdmin) Handle(method, publicPath string, handle httprouter.Handle) {
-	r.Router.Handle(method, path.Join(AdminPrefix, publicPath), NoCacheHandle(handle))
+	r.Router.Handle(method, path.Join(AdminPrefix, publicPath), NoCacheHandle(WrapHTTPRouter(handle)))
 }
 
 func (r *RouterAdmin) HandlerFunc(method, publicPath string, handler http.HandlerFunc) {

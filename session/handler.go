@@ -25,6 +25,7 @@ type (
 		x.WriterProvider
 		x.LoggingProvider
 		x.CSRFProvider
+		x.TracingProvider
 		config.Provider
 	}
 	HandlerProvider interface {
